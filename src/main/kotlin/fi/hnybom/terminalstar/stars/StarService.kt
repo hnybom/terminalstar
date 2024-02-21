@@ -16,15 +16,16 @@ object StarService {
         }
     }
 
-    fun addStar(path: String, desc: String, shorthand: String = "") {
-        if(isPathAlreadyAdded(path)) return
+    fun addStar(path: String, desc: String, shorthand: String = "") : Boolean {
+        if(isPathAlreadyAdded(path)) return false
 
-        DbConnection.withDatabaseConnection { conn ->
+        return DbConnection.withDatabaseConnection { conn ->
             val stmt = conn.prepareStatement("INSERT INTO stars (path, desc, shorthand) VALUES (?, ?, ?)")
             stmt.setString(1, path)
             stmt.setString(2, desc)
             stmt.setString(3, shorthand)
             stmt.execute()
+            true
         }
     }
 
