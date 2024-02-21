@@ -73,10 +73,10 @@ object StarService {
         }
     }
 
-    fun removePath(path: String) {
+    fun removePath(shorthand: String) {
         DbConnection.withDatabaseConnection { conn ->
-            val stmt = conn.prepareStatement("DELETE FROM stars WHERE path = ?")
-            stmt.setString(1, path)
+            val stmt = conn.prepareStatement("DELETE FROM stars WHERE shorthand = ?")
+            stmt.setString(1, shorthand)
             stmt.execute()
         }
     }
