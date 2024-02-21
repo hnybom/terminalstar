@@ -7,31 +7,7 @@ import java.lang.StringBuilder
 
 object StarService {
 
-    data class Star(val id: Int?, val path: String, val desc: String, val shorthand: String = "") {
-        override fun toString(): String {
-            return if(shorthand.isEmpty() && desc.isEmpty()) {
-                path
-            } else if(shorthand.isEmpty()) {
-                table {
-                    header("Path", "Description")
-                    row(path, desc)
-
-                    hints {
-                        borderStyle = Table.BorderStyle.SINGLE_LINE
-                    }
-
-                }.render(StringBuilder()).toString()
-            } else {
-                table {
-                    header("Shorthand", "Path", "Description")
-                    row(shorthand, path, desc)
-                    hints {
-                        borderStyle = Table.BorderStyle.SINGLE_LINE
-                    }
-                }.render(StringBuilder()).toString()
-            }
-        }
-    }
+    data class Star(val id: Int?, val path: String, val desc: String, val shorthand: String = "")
 
     init {
         DbConnection.withDatabaseConnection { conn ->
