@@ -1,6 +1,9 @@
 package fi.hnybom.terminalstar.stars
 
+import de.m3y.kformat.Table
+import de.m3y.kformat.table
 import fi.hnybom.terminalstar.config.DbConnection
+import java.lang.StringBuilder
 
 object StarService {
 
@@ -9,9 +12,23 @@ object StarService {
             return if(shorthand.isEmpty() && desc.isEmpty()) {
                 path
             } else if(shorthand.isEmpty()) {
-                "$path - $desc"
+                table {
+                    header("Path", "Description")
+                    row(path, desc)
+
+                    hints {
+                        borderStyle = Table.BorderStyle.SINGLE_LINE
+                    }
+
+                }.render(StringBuilder()).toString()
             } else {
-                "$path - $shorthand - $desc"
+                table {
+                    header("Shorthand", "Path", "Description")
+                    row(shorthand, path, desc)
+                    hints {
+                        borderStyle = Table.BorderStyle.SINGLE_LINE
+                    }
+                }.render(StringBuilder()).toString()
             }
         }
     }

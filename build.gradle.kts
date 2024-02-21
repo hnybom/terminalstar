@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation("org.xerial:sqlite-jdbc:3.45.1.0")
     implementation("org.slf4j:slf4j-simple:2.0.12")
+    implementation("de.m3y.kformat:kformat:0.10")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
