@@ -33,7 +33,7 @@ object StarService {
 
         return DbConnection.withDatabaseConnection { conn ->
             val stmt = conn.createStatement()
-            val rs = stmt.executeQuery("SELECT * FROM stars")
+            val rs = stmt.executeQuery("SELECT * FROM stars order by shorthand")
             generateSequence {
                 if (rs.next()) {
                     Star(

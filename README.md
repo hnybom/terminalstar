@@ -15,6 +15,31 @@ Usage: star <COMMAND> -->
     add                             Add a new path to the database
     add <shorthand> <description>   Add a new path to the database with a shorthand and a description
 ```
+## Examples
+Adding a directory to the database
+````
+# Be in the directory you want to add
+~ star add home my home directory
+````
+Listing all saved paths
+```
+~ star ls                                                                                                                                                                                 0 [14:16:19]
+Shorthand |                                        Path |                               Description
+----------|---------------------------------------------|------------------------------------------
+     home |                          /Users/henri.nybom |                         my home directory
+      img |         /Users/henri.nybom/work//dev/images |     VM images downloaded from the project
+       ui |    /Users/henri.nybom/work/project-x/ui-web |                      ui project directory
+```
+Removing a path from the database
+```
+~ star rm home
+```
+Getting the path for a shorthand
+```
+~ star img
+# To change to the directory
+~ cd $(star img)
+```
 
 ## Database
 The database is located in the user's home directory 
