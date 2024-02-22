@@ -7,7 +7,7 @@ Just compile with graalvm and you are good to go.
 
 ## Usage
 ```
-Usage: star <COMMAND> -->
+Usage: star <COMMAND> [ARGS]
     ls                              List all saved paths
     rm                              Remove current path from the database
     rm <shorthand>                  Remove the path with the given shorthand
